@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bolinhas saltitando</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link  href="css/style.css" media="all" rel="stylesheet" />
+
+    </head>
+    <body>
+        <div id="master">
+            <h1>Bolinhas</h1>
+            <h2>JavaScript e Canvas(HTML5)</h2>
+            <p>Bolinhas:<span id="bolinhas"></span></p>
+            <canvas id="myCanvas" width="650" height="400"></canvas>
+            <div class="info">
+
+            </div>
+        </div>
+        <script src="script/estrutura.js"></script>
+        <script src="script/init.js"></script>
+        <script type="text/javascript">
+
+            window.requestAnimFrame = (function (callback) {
+                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+                        function (callback) {
+                            window.setTimeout(callback, 1000 / 60);
+                        };
+            })();
+
+
+            window.onload = function () {
+                Processamento.definicaoInicial(document.getElementById('myCanvas'),36);
+                var gerenciadorAnimacao = function (timestamp) {
+                    Processamento.gerenciarAnimacao();
+                    window.requestAnimationFrame(gerenciadorAnimacao);
+                }
+                window.requestAnimationFrame(gerenciadorAnimacao);
+
+            }
+
+        </script>
+    </body>
+</html>
